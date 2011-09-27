@@ -168,8 +168,8 @@ src_install() {
 	rm "${D}"usr/share/doc/"${PF}"/Makefile* || die "Failed to remove doc make files"
 
 	#Remove unneeded .la files (Bug #382863)
-	rm "${D}"usr/lib64/snort_dynamicengine/libsf_engine.la || die
-	rm "${D}"usr/lib64/snort_dynamicpreprocessor/libsf_*_preproc.la || die "Failed to remove libsf_?_preproc.la"
+	rm "${D}"usr/$(get_libdir)/snort_dynamicengine/libsf_engine.la || die
+	rm "${D}"usr/$(get_libdir)/snort_dynamicpreprocessor/libsf_*_preproc.la || die "Failed to remove libsf_?_preproc.la"
 
 	# Set the correct lib path for dynamicengine, dynamicpreprocessor, and dynamicdetection
 	sed -i -e 's|/usr/local/lib|/usr/'$(get_libdir)'|g' \
